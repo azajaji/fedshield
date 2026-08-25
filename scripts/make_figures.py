@@ -191,7 +191,7 @@ def fig_overview(out: Path) -> None:
 
 def fig_headline(df: pd.DataFrame, out: Path) -> None:
     rows_meta = [
-        ("asr",   "Attack success rate (lower better)", True),
+        ("asr",   "Attack-effect term $s$ (lower better)", True),
         ("score", "Defense score (higher better)",     False),
     ]
     fig, axes = plt.subplots(2, len(DATASETS),
@@ -231,8 +231,8 @@ def fig_headline(df: pd.DataFrame, out: Path) -> None:
                         color=tcolor, fontweight=weight)
             # Extend x-axis so labels fit
             ax.set_xlim(0, xmax * 1.2)
-    fig.suptitle("Headline performance: per-method ASR (top) and defense score "
-                 "(bottom) per dataset (5 seeds, 32 attacked cells)",
+    fig.suptitle("Headline performance: per-method attack-effect term $s$ (top) and "
+                 "defense score (bottom) per dataset (5 seeds, 32 attacked cells)",
                  fontsize=11, y=1.00)
     fig.tight_layout(rect=[0, 0, 1, 0.97])
     fig.savefig(out, bbox_inches="tight"); plt.close(fig)
@@ -645,8 +645,8 @@ def fig_decision_guide(out: Path) -> None:
 
     # --- Row 1: calibration step ----------------------------------------
     rect(7, 11.5, 8.6, 1.0,
-         "Calibration round (no attack):\n"
-         "estimate clean-update dispersion with no malicious clients",
+         "Calibration round (no attack) and stress-test subset:\n"
+         "characterize honest-update geometry",
          fs=FS_STEP)
     arrow(7, 11.0, 7, 10.3)
 
@@ -669,12 +669,12 @@ def fig_decision_guide(out: Path) -> None:
 
     # --- Row 3: decision 2 (dispersion) ---------------------------------
     diamond(7, 6.8, 6.8, 1.8,
-            "Honest-update dispersion D:\ncompact (small) or dispersed (large) ?",
+            "Calibration or stress-test indicates\ncentroid-near (mimicry-style) geometry ?",
             fs=FS_DECIDE - 1)
 
     # Branches down to result terminals
-    arrow(5.0, 5.9, 5.0, 4.0, label="compact", label_pos="left")
-    arrow(9.0, 5.9, 9.0, 4.0, label="dispersed /\nunknown", label_pos="right")
+    arrow(5.0, 5.9, 5.0, 4.0, label="yes", label_pos="left")
+    arrow(9.0, 5.9, 9.0, 4.0, label="no /\nunknown", label_pos="right")
 
     # --- Row 4: terminal result boxes -----------------------------------
     rect(5.0, 3.2, 3.6, 1.5,
