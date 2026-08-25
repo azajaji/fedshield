@@ -26,7 +26,6 @@ venv/
 Thumbs.db
 .vscode/
 .idea/
-.claude/
 
 # Internal working notes
 editing_plan.md
@@ -42,3 +41,4 @@ scripts/overnight_supervisor.ps1
 scripts/run_paper_sweeps.ps1
 scripts/prep_wesad.py
 configs/wesad_fedshield.yaml
+grammar_check_text.txt
