@@ -679,7 +679,7 @@ def fig_decision_guide(out: Path) -> None:
     # --- Row 4: terminal result boxes -----------------------------------
     rect(5.0, 3.2, 3.6, 1.5,
          "FedShield-Mean\n(alpha = 0.90)\n"
-         "magnitude-attack regime",
+         "centroid-near /\nmimicry-style regime",
          fill=FILL_TERM, lw=1.1, bold=False, fs=FS_TERM)
     rect(9.0, 3.2, 3.6, 1.5,
          "FedShield\n(alpha = 0.25)\n"
