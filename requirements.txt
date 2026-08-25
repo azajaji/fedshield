@@ -1,0 +1,13 @@
+numpy>=1.24
+pandas>=2.0
+scipy>=1.11
+scikit-learn>=1.3
+torch>=2.1
+matplotlib>=3.7
+PyYAML>=6.0
+tqdm>=4.66
+
+# optional but recommended for real-data preprocessing
+wfdb>=4.1            ; extra == "ecg"     # PhysioNet WFDB readers
+biosppy>=2.2         ; extra == "wesad"   # WESAD signal preprocessing
+pyarrow>=15.0        ; extra == "ciciomt" # CICIoMT parquet

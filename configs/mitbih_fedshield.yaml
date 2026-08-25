@@ -1,0 +1,38 @@
+name: mitbih_fedshield
+seed: 42
+device: auto
+out_dir: ./results
+log_every: 1
+data:
+  name: mitbih
+  root: ./data
+  num_clients: 10
+  dirichlet_alpha: 0.5
+  test_fraction: 0.2
+  val_fraction: 0.1
+  batch_size_choices: [32, 64]
+  use_synthetic_fallback: false
+model:
+  arch: ecg_cnn
+  num_classes: 5
+  ae_bottleneck: 16
+attack:
+  malicious_ratio: 0.2
+  types: [label_flip, backdoor, sign_flip]
+  sign_flip_lambda: 5.0
+  backdoor_target: 0
+  backdoor_amplitude: 0.02
+  backdoor_freq: 15.0
+defense:
+  name: fedshield
+  fedshield_alpha_ema: 0.6
+  fedshield_threshold_k: 3.0
+  fedshield_cosine_floor: 0.0
+federated:
+  rounds: 30
+  sample_ratio: 0.6
+  local_epochs_choices: [1, 2, 3]
+  optimizer: sgd
+  lr: 0.01
+  momentum: 0.9
+  weight_decay: 0.0001
